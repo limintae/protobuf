@@ -1,0 +1,12 @@
+syntax = "proto3";
+package protobuf;
+
+option java_package = "com.example.protobuf.batch";
+option java_outer_classname = "OrderEventProtoV1";
+
+message OrderMessageV1 {
+  int32 orderId = 1;
+  string orderName = 2;
+  string address = 3;
+  string email = 4;
+}
