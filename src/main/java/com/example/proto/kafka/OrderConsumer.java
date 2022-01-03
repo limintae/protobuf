@@ -23,6 +23,5 @@ public class OrderConsumer {
         OrderEventProtoV1.OrderMessageV1 orderMessageV1 = OrderEventProtoV1.OrderMessageV1.parseFrom(message);
         log.info(orderMessageV1.toString());
     }
-
-
+    
 }

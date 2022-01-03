@@ -3,6 +3,7 @@ package com.example.proto.kafka;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.ByteArrayDeserializer;
 import org.apache.kafka.common.serialization.StringDeserializer;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafka;
@@ -12,7 +13,6 @@ import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
 import org.springframework.kafka.support.serializer.ErrorHandlingDeserializer;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,11 +24,10 @@ import java.util.Map;
 @EnableKafka
 public class KafkaConsumerConfig {
 
+    @Value("${kafka.bootstrapServers}")
     private final List<String> kafkaServers;
 
-    public KafkaConsumerConfig() {
-        List<String> kafkaServers = new ArrayList<>();
-        kafkaServers.add("127.0.0.1:9094");
+    public KafkaConsumerConfig(@Value("${kafka.bootstrapServers}") List<String> kafkaServers) {
         this.kafkaServers = kafkaServers;
     }
 
